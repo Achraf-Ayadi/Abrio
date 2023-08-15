@@ -34,13 +34,13 @@ describe('Inhalt component', () => {
       />
     )
 
-    const addToCartButton = screen.getAllByText('Add to Cart')[0] // Get the first button
+    const addToCartButton = screen.getAllByText('Add to Cart')[0] 
     fireEvent.click(addToCartButton)
 
-    // Assertions
+
     expect(setCart).toHaveBeenCalledWith([{ ...mockDaten[0], quantity: 1 }])
     expect(setSumme).toHaveBeenCalled()
   })
 
-  // Add more test cases here if needed
+  
 })

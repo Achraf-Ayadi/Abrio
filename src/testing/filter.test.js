@@ -5,7 +5,6 @@ import Filter from '../Components/filter'
 describe('Filter component', () => {
   test('renders without errors', () => {
     render(<Filter />)
-    // You can add more assertions here as needed
   })
 
   test('selects and unselects categories correctly', () => {
@@ -53,6 +52,4 @@ describe('Filter component', () => {
 
     expect(setSort).toHaveBeenCalledWith('desc')
   })
-
-  // Add more test cases here if needed
 })
