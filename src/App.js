@@ -64,7 +64,7 @@ const App = () => {
         setSumme={setSumme}
         cart={cart}
         setCart={setCart}
-        daten={NewProducts}
+        daten={data}
       ></WarenKorb>
     </section>
   )

@@ -25,7 +25,7 @@ const Inhalt = ({ daten, cart, setCart, summe, setSumme }) => {
   }, [cart, setSumme])
 
   return (
-    <div className='grid sm:grid-cols-3  gap-4 grid-cols-1 mt-6 border-b-2 pb-4'>
+    <div className='grid lg:grid-cols-3 sm:grid-cols-2  gap-4 grid-cols-1 mt-6 border-b-2 pb-4'>
       {daten.map((item, index) => {
         return (
           <div key={index} className='flex flex-col items-center'>
@@ -40,7 +40,9 @@ const Inhalt = ({ daten, cart, setCart, summe, setSumme }) => {
 
               <button
                 disabled={item.lager === 0}
-                className={`bg-blue-400 px-2 rounded hover:bg-blue-300 `}
+                className={` bg-blue-400 px-2 rounded hover:bg-blue-300 ${
+                  item.lager === 0 && 'cursor-not-allowed'
+                } `}
                 onClick={() => addToCart(item)}
               >
                 Add to Cart

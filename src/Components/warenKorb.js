@@ -10,7 +10,7 @@ const WarenKorb = ({ summe, cart, setCart, daten }) => {
   }
   return (
     <div className=' mt-4 pb-8 space-y-4'>
-      <h4>WARENKORB</h4>
+      <h4 className='font-bold'>WARENKORB</h4>
       <div className='flex flex-col space-y-8 justify-between'>
         {cart.length === 0 && (
           <p className='flex justify-center'>Warenbkorb ist leer</p>

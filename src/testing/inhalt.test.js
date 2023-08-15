@@ -4,9 +4,20 @@ import Inhalt from '../Components/inhalt'
 
 describe('Inhalt component', () => {
   const mockDaten = [
-    { name: 'Product 1', lager: 10, preis: 1000 }, // Example data
-    { name: 'Product 2', lager: 5, preis: 2000 },
-    // ... Add more example data as needed
+    {
+      name: 'Produkt 1',
+      farbe: ['R'],
+      kategorie: ['A'],
+      lager: 0,
+      preis: 1000,
+    },
+    {
+      name: 'Produkt 2',
+      farbe: ['B'],
+      kategorie: ['A'],
+      lager: 3,
+      preis: 899,
+    },
   ]
 
   it('adds item to cart and updates total sum', () => {
@@ -23,10 +34,13 @@ describe('Inhalt component', () => {
       />
     )
 
-    const addToCartButton = screen.getByText('Add to Cart')
+    const addToCartButton = screen.getAllByText('Add to Cart')[0] // Get the first button
     fireEvent.click(addToCartButton)
 
+    // Assertions
     expect(setCart).toHaveBeenCalledWith([{ ...mockDaten[0], quantity: 1 }])
     expect(setSumme).toHaveBeenCalled()
   })
+
+  // Add more test cases here if needed
 })

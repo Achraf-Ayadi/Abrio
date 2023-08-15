@@ -2,21 +2,57 @@ import React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
 import Filter from '../Components/filter'
 
-test('selects colors correctly', () => {
-  // Mock function for setting selected colors
-  const setSelectedColors = jest.fn()
+describe('Filter component', () => {
+  test('renders without errors', () => {
+    render(<Filter />)
+    // You can add more assertions here as needed
+  })
 
-  // Render the Filter component with mock props
-  render(
-    <Filter
-      selectedColors={['R']} // Replace with initial selected colors
-      setSelectedColors={setSelectedColors}
-    />
-  )
+  test('selects and unselects categories correctly', () => {
+    render(<Filter />)
 
-  // Simulate clicking a color checkbox
-  const colorCheckbox = screen.getByLabelText('R') // Replace with actual color label
-  fireEvent.click(colorCheckbox)
+    const categoryCheckbox = screen.getByLabelText('A')
+    fireEvent.click(categoryCheckbox)
 
-  expect(setSelectedColors).toHaveBeenCalledWith(['R', 'G']) // Replace with expected selected colors
+    expect(categoryCheckbox.checked).toBe(true)
+
+    fireEvent.click(categoryCheckbox)
+
+    expect(categoryCheckbox.checked).toBe(false)
+  })
+
+  test('selects and unselects colors correctly', () => {
+    render(<Filter />)
+
+    const colorCheckbox = screen.getByLabelText('R')
+    fireEvent.click(colorCheckbox)
+
+    expect(colorCheckbox.checked).toBe(true)
+
+    fireEvent.click(colorCheckbox)
+
+    expect(colorCheckbox.checked).toBe(false)
+  })
+
+  test('clicks on Asc button correctly', () => {
+    const setSort = jest.fn()
+    render(<Filter setSort={setSort} />)
+
+    const ascButton = screen.getByText('Asc')
+    fireEvent.click(ascButton)
+
+    expect(setSort).toHaveBeenCalledWith('asc')
+  })
+
+  test('clicks on Desc button correctly', () => {
+    const setSort = jest.fn()
+    render(<Filter setSort={setSort} />)
+
+    const descButton = screen.getByText('Desc')
+    fireEvent.click(descButton)
+
+    expect(setSort).toHaveBeenCalledWith('desc')
+  })
+
+  // Add more test cases here if needed
 })

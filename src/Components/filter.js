@@ -8,7 +8,6 @@ const Filter = ({
   setSort,
 }) => {
   const handleCategoryChange = (category, isChecked) => {
-    console.log(category, isChecked)
     if (isChecked) {
       setSelectedCategories((prevCategories) => [...prevCategories, category])
     } else {
@@ -32,13 +31,14 @@ const Filter = ({
   return (
     <div className='flex sm:flex-row flex-col  sm:justify-between items-center border-b-2 pb-2'>
       <div>
-        <h4>Kategorie</h4>
+        <h4 className='font-bold'>Kategorie</h4>
         <div className='flex flex-row space-x-4'>
           {['A', 'B', 'C'].map((category, index) => {
             return (
               <div className='flex flex-col ' key={index}>
-                <label>{category}</label>
+                <label htmlFor={'color' + category}>{category}</label>
                 <input
+                  id={category}
                   type='checkbox'
                   value={category}
                   checked={selectedCategories?.includes(category)}
@@ -53,13 +53,25 @@ const Filter = ({
       </div>
 
       <div>
-        <h4>Farben</h4>
+        <h4 className='font-bold'>Farben</h4>
         <div className='flex flex-row space-x-4'>
           {['R', 'G', 'B'].map((farbe, index) => {
             return (
               <div className='flex flex-col  ' key={index}>
-                <label>{farbe}</label>
+                <label
+                  htmlFor={'color' + farbe}
+                  className={` ${
+                    farbe === 'R'
+                      ? 'text-red-500'
+                      : farbe === 'G'
+                      ? 'text-green-500'
+                      : 'text-blue-500'
+                  }`}
+                >
+                  {farbe}
+                </label>
                 <input
+                  id={farbe}
                   type='checkbox'
                   value={farbe}
                   checked={selectedFarben?.includes(farbe)}
@@ -72,7 +84,7 @@ const Filter = ({
       </div>
 
       <div>
-        <h4>Sortieren</h4>
+        <h1 className='font-bold'>Sortieren</h1>
         <div className='flex flex-row space-x-2 '>
           <button
             className='flex flex-row space-x-4'
