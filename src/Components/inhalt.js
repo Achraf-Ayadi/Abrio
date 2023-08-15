@@ -14,14 +14,15 @@ const Inhalt = ({ daten, cart, setCart, summe, setSumme }) => {
     }
     daten.find((item) => item === product).lager -= 1
   }
-  const calculateTotal = () => {
-    return cart.reduce((total, product) => {
-      return total + product.preis * product.quantity
-    }, 0)
-  }
   useEffect(() => {
+    const calculateTotal = () => {
+      return cart.reduce((total, product) => {
+        return total + product.preis * product.quantity
+      }, 0)
+    }
+
     setSumme(calculateTotal() / 100)
-  }, [cart])
+  }, [cart, setSumme])
 
   return (
     <div className='grid sm:grid-cols-3  gap-4 grid-cols-1 mt-6 border-b-2 pb-4'>
