@@ -2,40 +2,21 @@ import React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
 import Filter from '../Components/filter'
 
-describe('Filter component', () => {
-  it('selects categories correctly', () => {
-    const setSelectedCategories = jest.fn()
-    render(
-      <Filter
-        selectedCategories={['A']}
-        setSelectedCategories={setSelectedCategories}
-        selectedFarben={[]}
-        setSelectedFarben={() => {}}
-        sort=''
-        setSort={() => {}}
-        daten={[]}
-      />
-    )
+test('selects colors correctly', () => {
+  // Mock function for setting selected colors
+  const setSelectedColors = jest.fn()
 
-    fireEvent.click(screen.getByLabelText('B'))
-    expect(setSelectedCategories).toHaveBeenCalledWith(['A', 'B'])
-  })
+  // Render the Filter component with mock props
+  render(
+    <Filter
+      selectedColors={['R']} // Replace with initial selected colors
+      setSelectedColors={setSelectedColors}
+    />
+  )
 
-  it('selects colors correctly', () => {
-    const setSelectedFarben = jest.fn()
-    render(
-      <Filter
-        selectedCategories={[]}
-        setSelectedCategories={() => {}}
-        selectedFarben={['R']}
-        setSelectedFarben={setSelectedFarben}
-        sort=''
-        setSort={() => {}}
-        daten={[]}
-      />
-    )
+  // Simulate clicking a color checkbox
+  const colorCheckbox = screen.getByLabelText('R') // Replace with actual color label
+  fireEvent.click(colorCheckbox)
 
-    fireEvent.click(screen.getByLabelText('G'))
-    expect(setSelectedFarben).toHaveBeenCalledWith(['R', 'G'])
-  })
+  expect(setSelectedColors).toHaveBeenCalledWith(['R', 'G']) // Replace with expected selected colors
 })

@@ -41,7 +41,7 @@ const Filter = ({
                 <input
                   type='checkbox'
                   value={category}
-                  checked={selectedCategories.includes(category)}
+                  checked={selectedCategories?.includes(category)}
                   onChange={(e) =>
                     handleCategoryChange(category, e.target.checked)
                   }
@@ -62,7 +62,7 @@ const Filter = ({
                 <input
                   type='checkbox'
                   value={farbe}
-                  checked={selectedFarben.includes(farbe)}
+                  checked={selectedFarben?.includes(farbe)}
                   onChange={(e) => handleFarbeChange(farbe, e.target.checked)}
                 ></input>
               </div>
@@ -73,7 +73,7 @@ const Filter = ({
 
       <div>
         <h4>Sortieren</h4>
-        <div className='flex flex-row space-x-2'>
+        <div className='flex flex-row space-x-2 '>
           <button
             className='flex flex-row space-x-4'
             onClick={() => setSort('asc')}
@@ -81,7 +81,7 @@ const Filter = ({
             Asc
           </button>
           <button
-            className='flex flex-row space-x-4'
+            className='flex flex-row space-x-4 '
             onClick={() => setSort('desc')}
           >
             Desc
